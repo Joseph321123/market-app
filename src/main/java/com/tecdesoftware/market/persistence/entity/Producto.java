@@ -29,4 +29,60 @@ public class Producto {
 
     private Boolean estado;
 
+    public Integer getId_producto() {
+        return idProducto;
+    }
+
+    public void setId_producto(Integer id_producto) {
+        this.idProducto = id_producto;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Integer getId_categoria() {
+        return idCategoria;
+    }
+
+    public void setId_categoria(Integer id_categoria) {
+        this.idCategoria = id_categoria;
+    }
+
+    public String getCodigo_barras() {
+        return codigoBarra;
+    }
+
+    public void setCodigo_barras(String codigo_barras) {
+        this.codigoBarra = codigo_barras;
+    }
+
+    public Double getPrecio_venta() {
+        return precioVenta;
+    }
+
+    public void setPrecio_venta(Double precio_venta) {
+        this.precioVenta = precio_venta;
+    }
+
+    public Integer getCantidad_stock() {
+        return cantidadStock;
+    }
+
+    public void setCantidad_stock(Integer cantidad_stock) {
+        this.cantidadStock = cantidad_stock;
+    }
+
+    public Boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
+    }
+
 }

@@ -23,5 +23,54 @@ public class compra {
     private String medioPago;
 
     private String comentario;
-    private String estado;
+    private Boolean estado;
+
+    public Integer getId_compra() {
+        return idCompra;
+    }
+
+    public void setId_compra(Integer id_compra) {
+        this.idCompra = id_compra;
+    }
+
+    public String getId_cliente() {
+        return idCliente;
+    }
+
+    public void setId_cliente(String id_cliente) {
+        this.idCliente = id_cliente;
+    }
+
+    public LocalDate getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
+    }
+
+    public String getMedio_pago() {
+        return medioPago;
+    }
+
+    public void setMedio_pago(String medio_pago) {
+        this.medioPago = medio_pago;
+    }
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
+    }
+
+    public Boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
+    }
+
 }
