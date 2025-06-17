@@ -23,6 +23,19 @@ dependencies {
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa:3.4.5")
+
+
+	//Crud repository
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	//Dependencias de persistencia de datos en aplicaciones Java guardar, recuperar, actualizar y borrar objetos Java en bases de datos relacionales
+	implementation 'jakarta.persistence:jakarta.persistence-api:3.1.0'
+	implementation 'org.hibernate.orm:hibernate-core:6.4.4.Final'
+
+	//CRUD Repository
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
 }
 
 tasks.named('test') {
