@@ -1,5 +1,6 @@
 package com.tecdesoftware.market.persistence.entity;
 
+import java.util.List;
 
 import jakarta.persistence.*;
 
@@ -24,6 +25,13 @@ public class compra {
 
     private String comentario;
     private Boolean estado;
+
+    @ManyToOne
+    @JoinColumn(name = "id_cliente", insertable=false, updatable=false)
+    private Cliente cliente;
+
+    @OneToMany(mappedBy="producto")
+    private List<CompraProducto> productos;
 
     public Integer getId_compra() {
         return idCompra;
