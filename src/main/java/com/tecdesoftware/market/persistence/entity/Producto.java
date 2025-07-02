@@ -13,9 +13,9 @@ public class Producto {
     private Integer idProducto;
     private String nombre;
     private Integer id_categoria;
-    private String codigo_barras;
-    private Double precio_venta;
-    private Integer cantidad_stock;
+    private String codigoBarras;
+    private Double precioVenta;
+    private Integer cantidadStock;
     private Boolean estado;
 
     @ManyToOne
@@ -43,27 +43,27 @@ public class Producto {
     }
 
     public String getCodigo_barras() {
-        return codigo_barras;
+        return codigoBarras;
     }
 
     public void setCodigo_barras(String codigo_barras) {
-        this.codigo_barras = codigo_barras;
+        this.codigoBarras = codigo_barras;
     }
 
     public Double getPrecio_venta() {
-        return precio_venta;
+        return precioVenta;
     }
 
     public void setPrecio_venta(Double precio_venta) {
-        this.precio_venta = precio_venta;
+        this.precioVenta = precio_venta;
     }
 
     public Integer getCantidad_stock() {
-        return cantidad_stock;
+        return cantidadStock;
     }
 
     public void setCantidad_stock(Integer cantidad_stock) {
-        this.cantidad_stock = cantidad_stock;
+        this.cantidadStock = cantidad_stock;
     }
 
     public Boolean getEstado() {
@@ -72,5 +72,37 @@ public class Producto {
 
     public void setEstado(Boolean estado) {
         this.estado = estado;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
+    public String getCodigoBarras() {
+        return codigoBarras;
+    }
+
+    public void setCodigoBarras(String codigoBarras) {
+        this.codigoBarras = codigoBarras;
+    }
+
+    public Double getPrecioVenta() {
+        return precioVenta;
+    }
+
+    public void setPrecioVenta(Double precioVenta) {
+        this.precioVenta = precioVenta;
+    }
+
+    public Integer getCantidadStock() {
+        return cantidadStock;
+    }
+
+    public void setCantidadStock(Integer cantidadStock) {
+        this.cantidadStock = cantidadStock;
     }
 }
