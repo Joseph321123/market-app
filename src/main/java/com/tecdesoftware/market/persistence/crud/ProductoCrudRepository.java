@@ -14,7 +14,7 @@ public interface ProductoCrudRepository extends CrudRepository<Producto, Integer
     // FROM  productos
     //WHERE id_categoria =5 ?
    //Order by nombre ASC
-    List<Producto> findByIdcategoriaOrderByNombre(int idCategoria);
+    List<Producto> findByIdCategoriaOrderByNombre(int idCategoria);
 
     //cantidad en stock
     Optional<List<Producto>> findByCantidadStockLessThanAndEstado(int cantidadStock, boolean estado);

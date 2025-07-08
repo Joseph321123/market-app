@@ -13,13 +13,17 @@ public class CompraProducto {
     private Double total;
     private Boolean estado;
 
+    //Llave compuesta
+    //Final de relación con compra
     @ManyToOne
+    @MapsId("idCompra") // Enlaza con el campo del embeddable
     @JoinColumn(name="id_compra")
-    private Compras compra;
+    private Compra compra;
 
     @ManyToOne
+    @MapsId("idProducto") // Enlaza con el campo del embeddable
     @JoinColumn(name="id_producto")
-    private Producto productos;
+    private Producto producto;
 
     public CompraProductoPK getId() {
         return id;
@@ -52,5 +56,20 @@ public class CompraProducto {
     public void setEstado(Boolean estado) {
         this.estado = estado;
     }
-    
+
+    public Compra getCompra() {
+        return compra;
+    }
+
+    public void setCompra(Compra compra) {
+        this.compra = compra;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
 }

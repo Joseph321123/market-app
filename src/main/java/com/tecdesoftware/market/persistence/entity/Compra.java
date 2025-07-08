@@ -7,15 +7,20 @@ import java.util.List;
 
 @Entity
 @Table(name="compras")
-public class Compras {
+public class Compra {
     @Id
     //valor unico autoincrementable
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     //@Column (name='id_producto')
-    private Integer id_compra;
-    private String id_cliente;
+    @Column(name="id_compra")
+    private Integer idCompra;
+
+    @Column(name="id_cliente")
+    private String idCliente;
     private LocalDateTime fecha;
-    private String medio_pago;
+
+    @Column(name="medio_pago")
+    private String medioPago;
     private String comentario;
     private Boolean estado;
 
@@ -23,24 +28,9 @@ public class Compras {
     @JoinColumn(name = "id_cliente", insertable=false, updatable=false)
     private Cliente cliente;
 
-    @OneToMany(mappedBy="producto")
+    @OneToMany(mappedBy="compra")
     private List<CompraProducto> productos;
 
-    public Integer getId_compra() {
-        return id_compra;
-    }
-
-    public void setId_compra(Integer id_compra) {
-        this.id_compra = id_compra;
-    }
-
-    public String getId_cliente() {
-        return id_cliente;
-    }
-
-    public void setId_cliente(String id_cliente) {
-        this.id_cliente = id_cliente;
-    }
 
     public LocalDateTime getFecha() {
         return fecha;
@@ -50,13 +40,6 @@ public class Compras {
         this.fecha = fecha;
     }
 
-    public String getMedio_pago() {
-        return medio_pago;
-    }
-
-    public void setMedio_pago(String medio_pago) {
-        this.medio_pago = medio_pago;
-    }
 
     public String getComentario() {
         return comentario;
@@ -72,5 +55,45 @@ public class Compras {
 
     public void setEstado(Boolean estado) {
         this.estado = estado;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public List<CompraProducto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(List<CompraProducto> productos) {
+        this.productos = productos;
+    }
+
+    public Integer getIdCompra() {
+        return idCompra;
+    }
+
+    public void setIdCompra(Integer idCompra) {
+        this.idCompra = idCompra;
+    }
+
+    public String getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(String idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public String getMedioPago() {
+        return medioPago;
+    }
+
+    public void setMedioPago(String medioPago) {
+        this.medioPago = medioPago;
     }
 }
