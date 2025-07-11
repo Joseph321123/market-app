@@ -17,12 +17,12 @@ public class CompraProducto {
     //Final de relación con compra
     @ManyToOne
     @MapsId("idCompra") // Enlaza con el campo del embeddable
-    @JoinColumn(name="id_compra")
+    @JoinColumn(name="id_compra", insertable=false, updatable=false)
     private Compra compra;
 
     @ManyToOne
     @MapsId("idProducto") // Enlaza con el campo del embeddable
-    @JoinColumn(name="id_producto")
+    @JoinColumn(name="id_producto", insertable=false, updatable=false)
     private Producto producto;
 
     public CompraProductoPK getId() {
@@ -72,4 +72,7 @@ public class CompraProducto {
     public void setProducto(Producto producto) {
         this.producto = producto;
     }
+
+
+
 }
