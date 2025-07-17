@@ -6,12 +6,12 @@ import java.util.List;
 
 
 @Entity
-@Table (name="clientes)")
+@Table (name="clientes")
 public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
-    private String name;
+    private String nombre;
     private String apellidos;
     private Long celular; //numero largos
     private String direccion;
@@ -31,11 +31,11 @@ public class Cliente {
     }
 
     public String getName() {
-        return name;
+        return nombre;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.nombre = name;
     }
 
     public String getApellidos() {
