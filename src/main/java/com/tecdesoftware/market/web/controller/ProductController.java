@@ -7,14 +7,14 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-import java.util.Optional;
+
+@CrossOrigin(origins = "*")
 //Le dice a Spring que va a ser el controlador de una API REST
 @RestController
 @RequestMapping("/products")
@@ -104,7 +104,17 @@ public class ProductController {
 
 
     @PutMapping("/{id}")
-    public ResponseEntity<Product> update(@PathVariable("id") int productId, @RequestBody Product product) {
+    @Operation(
+            summary = "Update an existing product",
+            description = "Updates the details of an existing product using its ID. If the product doesn't exist, returns 404."
+    )
+    @ApiResponse(responseCode = "200", description = "Product updated successfully")
+    @ApiResponse(responseCode = "400", description = "Invalid product data")
+    @ApiResponse(responseCode = "404", description = "Product not found")
+    @ApiResponse(responseCode = "500", description = "Internal server error")
+    public ResponseEntity<Product> update(
+            @Parameter(description = "ID of the product to update", example = "7", required = true)
+            @PathVariable("id") int productId, @RequestBody Product product) {
         return productService.getProduct(productId)
                 .map(existingProduct -> {
                     product.setProductId(productId); // CORRECTO: usas el nombre del campo de la clase Product

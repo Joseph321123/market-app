@@ -2,6 +2,7 @@ package com.tecdesoftware.market.persistence.mapper;
 
 import com.tecdesoftware.market.domain.PurchaseItem;
 import com.tecdesoftware.market.persistence.entity.CompraProducto;
+import com.tecdesoftware.market.persistence.entity.Producto;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -18,12 +19,28 @@ public interface PurchaseItemMapper {
     })
     PurchaseItem toPurchaseItem(CompraProducto producto);
 
+
     @InheritInverseConfiguration
     @Mappings({
-            @Mapping(target="id.idCompra", ignore=true),
-            @Mapping(target="compra", ignore=true),
-            @Mapping(target="producto", ignore=true)
+            @Mapping(source = "productId", target = "id.idProducto"), // Mapea el id del producto a la llave compuesta
+            @Mapping(target="id.idCompra", ignore=true),              // Este se asigna después, por eso se ignora
+            @Mapping(target="compra", ignore=true),                   // Se asigna manualmente en el servicio/repository
+            // Es obligatorio asignar un objeto Producto no nulo para que Hibernate pueda obtener el ID
+            @Mapping(target="producto", expression = "java(createProductoFromId(item.getProductId()))")
     })
     CompraProducto toCompraProducto(PurchaseItem item);
 
+    /**
+     * Método helper para crear un objeto Producto con solo el ID asignado.
+     * Esto es necesario porque Hibernate usa la referencia a Producto
+     * para obtener la clave compuesta de CompraProducto.
+     *
+     * No se crea un nuevo producto en la base de datos, solo se asigna
+     * la referencia al producto existente con ese ID.
+     */
+    default Producto createProductoFromId(int productId) {
+        Producto producto = new Producto();
+        producto.setIdProducto(productId);
+        return producto;
+    }
 }
