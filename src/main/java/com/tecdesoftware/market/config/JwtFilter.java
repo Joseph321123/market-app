@@ -21,6 +21,14 @@ public class JwtFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request,
                                     HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
+
+        // Permite peticiones OPTIONS sin pasar por el filtro JWT
+        if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {
+            response.setStatus(HttpServletResponse.SC_OK);
+            filterChain.doFilter(request, response);
+            return;
+        }
+
         // Extrae la cabecera Authorization (si existe)
         String authHeader = request.getHeader("Authorization");
         // Si comienza con 'Bearer ', entonces es un token JWT
